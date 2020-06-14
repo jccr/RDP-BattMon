@@ -15,6 +15,7 @@ namespace FieldEffect
 
         static void Main(string[] args)
         {
+            Application.EnableVisualStyles();
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
             using (var presenter = (IBatteryDetailPresenter)NinjectConfig.Instance.GetService(typeof(IBatteryDetailPresenter)))

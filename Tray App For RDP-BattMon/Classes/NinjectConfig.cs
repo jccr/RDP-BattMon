@@ -10,6 +10,7 @@ using Ninject.Modules;
 using System;
 using System.Drawing;
 using Ninject.Extensions.Factory;
+using System.Windows.Forms;
 
 namespace FieldEffect.Classes
 {
@@ -57,8 +58,8 @@ namespace FieldEffect.Classes
             KernelInstance.Bind<IBatteryIcon>()
                 .To<BatteryIcon>()
                 .InSingletonScope()
-                .WithConstructorArgument("batteryTemplate", Properties.Resources.BattLevel)
-                .WithConstructorArgument("batteryLevelMask", new Rectangle(5, 10, 20, 10))
+                .WithConstructorArgument("batteryTemplate", new Icon(Properties.Resources.BattLevel, SystemInformation.SmallIconSize))
+                .WithConstructorArgument("batteryLevelMask", new Rectangle(3, 8, 18, 9))
                 .WithConstructorArgument("batteryOrientation", BatteryIcon.BatteryOrientation.HorizontalL)
                 .WithPropertyValue("BatteryLevel", 0);
 

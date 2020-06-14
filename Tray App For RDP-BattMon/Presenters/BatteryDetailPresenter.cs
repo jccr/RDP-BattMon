@@ -62,6 +62,7 @@ namespace FieldEffect.Presenters
                 BatteryDetailView.Visible = false;
                 BatteryDetailView.BatteryTrayControl.BalloonTipTitle = Properties.Resources.MinimizedTitle;
                 BatteryDetailView.BatteryTrayControl.BalloonTipText = Properties.Resources.MinimizedMessage;
+                BatteryDetailView.BatteryTrayControl.ShowBalloonTip()
                 BatteryDetailView.BatteryTrayControl.ShowBalloonTip(5000);
             }
         }
@@ -134,6 +135,7 @@ namespace FieldEffect.Presenters
 
             if (batteryInfo.Count > 0)
             {
+                BatteryDetailView.BatteryTrayControl.Visible = true;
                 int estCharge = (int)((totalBattery / totalPercent) * 100.0);
                 BatteryDetailView.ClientName = batteryInfo[0].ClientName;
                 BatteryDetailView.TotalEstimatedCharge = estCharge;
@@ -145,7 +147,8 @@ namespace FieldEffect.Presenters
             else
             {
                 BatteryDetailView.ClientName = Properties.Resources.NoBattFound;
-                BatteryDetailView.BatteryTrayIcon = Properties.Resources.NoBatt;
+                BatteryDetailView.BatteryTrayControl.Visible = false;
+                BatteryDetailView.BatteryTrayIcon = new Icon(Properties.Resources.NoBatt, SystemInformation.SmallIconSize);
             }
         }
 
